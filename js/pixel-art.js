@@ -29,25 +29,37 @@ colorPersonalizado.addEventListener('change',
     // Se guarda el color de la rueda en colorActual
     colorActual = colorPersonalizado.value;
     // Completar para que cambie el indicador-de-color al colorActual
-
+    indicadorColor.style.backgroundColor=colorActual;
 
   })
 );
 
 var paleta = document.getElementById("paleta");
-var grillapixeles = document.getElementById("grilla_pixeles");
+var grillapixeles = document.getElementById("grilla-pixeles");
 var paleta = document.getElementById("paleta");
+var Pixeles = [];
+var indicadorColor = document.getElementById("indicador-de-color");
 
-function paletaColores(){
+  function paletaColores(){
   for(var i=0; i<nombreColores.length;i++){
-    agregarPaletas(nombreColores[i],paleta);
+    var div = document.createElement("div");
+    div.style.backgroundColor=nombreColores[i];
+    paleta.appendChild(div);
   }
-}
+  }
 
 
-function agregarPaletas(colores, padre) {
-  var paletapadre = document.getElementById(padre);
-  var div = document.createElement("div");
-  div.textContent = colores;
-  paletapadre.appendChild(div);
-}
+  function grilla(){
+    for(var i=1749;i>Pixeles.length;i--){
+    var div = document.createElement("div");
+    div.style=Pixeles[i];
+    grillapixeles.appendChild(div);
+    }
+  }
+
+
+
+
+  paletaColores();
+  grilla();
+
