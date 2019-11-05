@@ -36,15 +36,25 @@ colorPersonalizado.addEventListener('change',
 
 var paleta = document.getElementById("paleta");
 var grillapixeles = document.getElementById("grilla-pixeles");
-var paleta = document.getElementById("paleta");
 var Pixeles = [];
 var indicadorColor = document.getElementById("indicador-de-color");
+var mouseEvent;
+
 
   function paletaColores(){
   for(var i=0; i<nombreColores.length;i++){
     var div = document.createElement("div");
+
+    div.addEventListener("click", function(o){
+      indicadorColor.style.backgroundColor = o.target.style.backgroundColor;
+
+    });
+
+
     div.style.backgroundColor=nombreColores[i];
     paleta.appendChild(div);
+
+
   }
   }
 
@@ -52,8 +62,24 @@ var indicadorColor = document.getElementById("indicador-de-color");
   function grilla(){
     for(var i=1749;i>Pixeles.length;i--){
     var div = document.createElement("div");
+
+    div.addEventListener("mousedown", function(o){
+      mouseEvent = true;
+        
+    });
+    div.addEventListener("mouseup", function(o){
+      mouseEvent = false;
+  
+    });
+    div.addEventListener("click", function(o){
+      o.target.style.backgroundColor = indicadorColor.style.backgroundColor;
+
+    });
+
+    
     div.style=Pixeles[i];
     grillapixeles.appendChild(div);
+
     }
   }
 
