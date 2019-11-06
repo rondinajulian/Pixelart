@@ -24,12 +24,12 @@ var nombreColores = ['White', 'LightYellow',
 // Es decir, el que se elige con la rueda de color.
 var colorPersonalizado = document.getElementById('color-personalizado');
 
-colorPersonalizado.addEventListener('change', 
-  (function() {
+colorPersonalizado.addEventListener('change',
+  (function () {
     // Se guarda el color de la rueda en colorActual
     colorActual = colorPersonalizado.value;
     // Completar para que cambie el indicador-de-color al colorActual
-    indicadorColor.style.backgroundColor=colorActual;
+    indicadorColor.style.backgroundColor = colorActual;
 
   })
 );
@@ -41,51 +41,60 @@ var indicadorColor = document.getElementById("indicador-de-color");
 var mouseEvent;
 
 
-  function paletaColores(){
-  for(var i=0; i<nombreColores.length;i++){
+function paletaColores() {
+  for (var i = 0; i < nombreColores.length; i++) {
     var div = document.createElement("div");
 
-    div.addEventListener("click", function(o){
+    div.addEventListener("click", function (o) {
       indicadorColor.style.backgroundColor = o.target.style.backgroundColor;
 
     });
 
 
-    div.style.backgroundColor=nombreColores[i];
+    div.style.backgroundColor = nombreColores[i];
     paleta.appendChild(div);
 
 
   }
-  }
+}
 
 
-  function grilla(){
-    for(var i=1749;i>Pixeles.length;i--){
+function grilla() {
+  for (var i = 1749; i > Pixeles.length; i--) {
     var div = document.createElement("div");
+    div.style.backgroundColor = Pixeles[i];
+    grillapixeles.appendChild(div);
 
-    div.addEventListener("mousedown", function(o){
-      mouseEvent = true;
-        
+    div.addEventListener("mousedown", function (o) {
+
+
     });
-    div.addEventListener("mouseup", function(o){
+    div.addEventListener("mouseup", function (o) {
       mouseEvent = false;
-  
+      console.log(mouseEvent);
+
     });
-    div.addEventListener("click", function(o){
+    div.addEventListener("click", function (o) {
       o.target.style.backgroundColor = indicadorColor.style.backgroundColor;
 
     });
 
-    
-    div.style=Pixeles[i];
-    grillapixeles.appendChild(div);
-
-    }
+    div.addEventListener("mouseover",function(o){
+      console.log("hola");
+      o.target.style.backgroundColor = indicadorColor.style.backgroundColor;
+     });
   }
 
+}
 
 
 
-  paletaColores();
-  grilla();
+
+
+
+
+
+
+paletaColores();
+grilla();
 
