@@ -39,6 +39,8 @@ var grillapixeles = document.getElementById("grilla-pixeles");
 var Pixeles = [];
 var indicadorColor = document.getElementById("indicador-de-color");
 var mouseEvent;
+var guardar= document.getElementById("guardar");
+var borrar = document.getElementById("borrar");
 
 
 function paletaColores() {
@@ -59,39 +61,42 @@ function paletaColores() {
 }
 
 
+var div;
 function grilla() {
   for (var i = 1749; i > Pixeles.length; i--) {
-    var div = document.createElement("div");
-    div.style.backgroundColor = Pixeles[i];
+    div = document.createElement("div");
+    div.style= Pixeles[i];  
+    div.className = "pixel";
     grillapixeles.appendChild(div);
 
-    div.addEventListener("mousedown", function (o) {
+    grillapixeles.onmousedown = function(){
+       mouseEvent=true;
+       console.log(mouseEvent);
+    };
 
-
-    });
-    div.addEventListener("mouseup", function (o) {
-      mouseEvent = false;
+    grillapixeles.onmouseup = function(){
+      mouseEvent=false;
       console.log(mouseEvent);
+   };
 
-    });
     div.addEventListener("click", function (o) {
       o.target.style.backgroundColor = indicadorColor.style.backgroundColor;
 
     });
 
-    div.addEventListener("mouseover",function(o){
-      console.log("hola");
-      o.target.style.backgroundColor = indicadorColor.style.backgroundColor;
-     });
   }
 
 }
 
+ guardar.onclick= function(){
+   guardarPixelArt();
 
+};
 
-
-
-
+borrar.onclick = function(){
+  $(".pixel").fadeOut(800);
+  $(".pixel").fadeIn(800);
+};
 
 
 
