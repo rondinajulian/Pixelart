@@ -39,8 +39,8 @@ var grillapixeles = document.getElementById("grilla-pixeles");
 var Pixeles = [];
 var indicadorColor = document.getElementById("indicador-de-color");
 var mouseEvent;
-var guardar= document.getElementById("guardar");
-var borrar = document.getElementById("borrar");
+
+
 
 
 function paletaColores() {
@@ -88,15 +88,19 @@ function grilla() {
 
 }
 
- guardar.onclick= function(){
+ $("#guardar").click(function(){
    guardarPixelArt();
 
-};
+ });
 
-borrar.onclick = function(){
+$("#borrar").click(function(){
   $(".pixel").fadeOut(800);
   $(".pixel").fadeIn(800);
-};
+});
+
+$("#batman").click(function(){
+  console.log("batman");
+});
 
 
 
