@@ -94,12 +94,25 @@ function grilla() {
  });
 
 $("#borrar").click(function(){
-  $(".pixel").fadeOut(800);
-  $(".pixel").fadeIn(800);
+  $(".pixel").fadeOut(400); 
+  $(".pixel").css("background-color","white");
+  $(".pixel").fadeIn(1000);
 });
 
 $("#batman").click(function(){
-  console.log("batman");
+  cargarSuperheroe(batman);
+});
+
+$("#wonder").click(function(){
+  cargarSuperheroe(wonder);
+});
+
+$("#flash").click(function(){
+  cargarSuperheroe(flash);
+});
+
+$("#invisible").click(function(){
+  cargarSuperheroe(invisible);
 });
 
 
