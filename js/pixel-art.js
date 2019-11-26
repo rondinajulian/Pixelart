@@ -38,7 +38,7 @@ var paleta = document.getElementById("paleta");
 var grillapixeles = document.getElementById("grilla-pixeles");
 var Pixeles = [];
 var indicadorColor = document.getElementById("indicador-de-color");
-var mouseEvent;
+var mouseEvent = false;
 
 
 
@@ -69,24 +69,57 @@ function grilla() {
     div.className = "pixel";
     grillapixeles.appendChild(div);
 
-    grillapixeles.onmousedown = function(){
-       mouseEvent=true;
-       console.log(mouseEvent);
-    };
 
-    grillapixeles.onmouseup = function(){
-      mouseEvent=false;
-      console.log(mouseEvent);
-   };
+
+
 
     div.addEventListener("click", function (o) {
       o.target.style.backgroundColor = indicadorColor.style.backgroundColor;
 
     });
-
   }
 
-}
+};
+
+
+
+
+
+$("#grilla-pixeles").mousedown(function(){
+   mouseEvent = true;
+   sentencia();
+   console.log(mouseEvent);
+});
+
+$("#grilla-pixeles").mouseup(function(){
+   mouseEvent = false;
+   sentencia();
+   console.log(mouseEvent);
+});
+
+function pintar(){
+  $(".pixel").mouseover(function(o){
+    o.target.style.backgroundColor = indicadorColor.style.backgroundColor;
+    console.log("pintar");
+  });
+};
+
+
+function sentencia(){
+  if (mouseEvent){
+    pintar();
+    console.log("chau");
+  }
+  else {
+    $(".pixel").unbind();
+    console.log("asasd");
+  }
+};
+
+
+
+
+
 
  $("#guardar").click(function(){
    guardarPixelArt();
@@ -113,7 +146,7 @@ $("#flash").click(function(){
 
 $("#invisible").click(function(){
   cargarSuperheroe(invisible);
-});
+})
 
 
 
